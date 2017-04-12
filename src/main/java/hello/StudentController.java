@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
@@ -28,5 +30,15 @@ public class StudentController {
 
 
         return new ResponseEntity<>(person, HttpStatus.OK);
+    }
+
+    @RequestMapping("{id}/examResults")
+    public HttpEntity<List<ExamResult>> getExamResults(
+            @PathVariable(value = "id") UUID id) {
+
+        List<ExamResult> results = new ArrayList<>();
+
+
+        return new ResponseEntity<>(results, HttpStatus.OK);
     }
 }

@@ -1,14 +1,9 @@
 package hello;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.hateoas.ResourceSupport;
-
 import java.util.UUID;
 
-public abstract class Person extends ResourceSupport {
+public abstract class Person extends ResourceIdSupport<UUID> {
     private String name;
-    @JsonProperty("id")
-    private UUID resourceId;
 
     public String getName() {
         return name;
@@ -16,13 +11,5 @@ public abstract class Person extends ResourceSupport {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public UUID getResourceId() {
-        return resourceId;
-    }
-
-    public void setResourceId(UUID id) {
-        this.resourceId = id;
     }
 }
