@@ -22,6 +22,7 @@ public class StudentController {
             @PathVariable(value = "id") UUID id) {
 
         Student person = new Student();
+        person.setName("foo");
         person.setResourceId(id);
         person.add(linkTo(methodOn(StudentController.class).get(id)).withSelfRel());
 

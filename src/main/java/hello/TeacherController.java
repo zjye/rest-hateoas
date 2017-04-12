@@ -20,6 +20,7 @@ public class TeacherController {
     public ResponseEntity<Teacher> get(@PathVariable UUID id) {
 
         Teacher person = new Teacher();
+        person.setName("bar");
         person.setResourceId(id);
         person.add(linkTo(methodOn(TeacherController.class).get(id)).withSelfRel());
 
