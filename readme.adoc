@@ -1,0 +1,53 @@
+Spring Hateoas Example
+----------------------
+Start the spring boot application 
+[source,bash]
+-----------------
+mvn spring-boot:run
+-----------------
+
+then do curl GET request
+[source,bash]
+-----------------
+curl http://localhost:8080/rooms/science
+-----------------
+
+and the response
+[source,json]
+-----------------
+{
+  "persons": [
+    {
+      "name": "foo",
+      "examResults": null,
+      "_links": {
+        "self": { // <1>
+          "href": "http://localhost:8080/students/ab74d592-0f2c-4483-b340-6e27c0ffc63f"
+        },
+        "examResults": { // <2>
+          "href": "http://localhost:8080/students/ab74d592-0f2c-4483-b340-6e27c0ffc63f/examResults"
+        }
+      },
+      "id": "ab74d592-0f2c-4483-b340-6e27c0ffc63f"
+    },
+    {
+      "name": "bar",
+      "_links": {
+        "self": { // <3>
+          "href": "http://localhost:8080/teachers/270bb5dd-4ef2-4405-9323-37b629b8ed8c"
+        }
+      },
+      "id": "270bb5dd-4ef2-4405-9323-37b629b8ed8c"
+    }
+  ],
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/rooms/science"
+    }
+  },
+  "id": "science"
+}
+-----------------
+<1> Self link for student
+<2> Rel link for student exam results
+<3> Self link for teacher
